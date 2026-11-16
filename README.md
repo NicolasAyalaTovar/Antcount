@@ -4,6 +4,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?logo=opencv&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 Antcount procesa un video cuadro a cuadro, identifica las hormigas en movimiento y muestra en pantalla su contorno y el conteo en tiempo real. Está pensado como herramienta de apoyo para estudios de comportamiento y actividad de forrajeo en entomología.
 
@@ -61,6 +62,10 @@ Antcount/
 - Seguimiento individual (tracking) para evitar contar dos veces la misma hormiga.
 - Exportar el conteo por cuadro a CSV para análisis posterior.
 - Calibración automática de `--min-area` según la resolución del video.
+
+## 📄 Licencia
+
+Distribuido bajo la licencia MIT. Consulta [`LICENSE`](LICENSE) para más información.
 
 ## 👤 Autor
 
