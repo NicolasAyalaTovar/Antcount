@@ -1,22 +1,67 @@
-# Detector de Hormigas por Visión de Computadora
+# 🐜 Antcount
 
-Este proyecto es un detector de hormigas que utiliza técnicas de visión por computadora para identificar y contar hormigas en un video. El script está desarrollado en Python utilizando OpenCV.
+**Detección y conteo automático de hormigas en video mediante visión por computadora.**
 
-## Descripción
+![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?logo=opencv&logoColor=white)
 
-El detector utiliza un sustractor de fondo para distinguir las hormigas en movimiento del fondo estático. Luego, aplica técnicas de procesamiento de imágenes como el desenfoque gaussiano y el umbral adaptativo para mejorar la detección de contornos. Finalmente, dibuja los contornos de las hormigas detectadas y muestra el conteo en el video.
+Antcount procesa un video cuadro a cuadro, identifica las hormigas en movimiento y muestra en pantalla su contorno y el conteo en tiempo real. Está pensado como herramienta de apoyo para estudios de comportamiento y actividad de forrajeo en entomología.
 
-## Requisitos
+## ⚙️ Cómo funciona
 
-- Python 3.x
-- OpenCV
+| Etapa | Técnica | Propósito |
+|---|---|---|
+| 1 | Sustracción de fondo (MOG2) | Separar objetos en movimiento del fondo estático |
+| 2 | Desenfoque gaussiano + umbral adaptativo | Resaltar los cuerpos oscuros de las hormigas |
+| 3 | Intersección de máscaras + cierre morfológico | Unir regiones y eliminar ruido |
+| 4 | Filtrado de contornos por área | Descartar detecciones demasiado pequeñas |
+| 5 | Anotación del cuadro | Dibujar contornos y mostrar el conteo |
 
-Puedes instalar OpenCV ejecutando:
+## 🚀 Instalación
+
 ```bash
-pip install opencv-python
+git clone https://github.com/NicolasAyalaTovar/Antcount.git
+cd Antcount
+pip install -r requirements.txt
+```
 
-# Autor
-Nicolás Ayala Tovar
+## ▶️ Uso
 
+Con el video de ejemplo incluido:
 
-Este README incluye una descripción del proyecto, instrucciones de uso y la información del autor. Puedes personalizarlo aún más según tus necesidades.
+```bash
+python antcount.py
+```
+
+Con un video propio y un área mínima personalizada:
+
+```bash
+python antcount.py ruta/al/video.mp4 --min-area 300
+```
+
+Pulsa **Q** para cerrar la ventana.
+
+| Parámetro | Descripción | Valor por defecto |
+|---|---|---|
+| `video` | Ruta del video de entrada | `data/ants_sample.mp4` |
+| `--min-area` | Área mínima (px) para contar un contorno como hormiga | `500` |
+
+## 📁 Estructura
+
+```
+Antcount/
+├── antcount.py          # Script principal
+├── data/
+│   └── ants_sample.mp4  # Video de ejemplo
+└── requirements.txt
+```
+
+## 🔭 Mejoras futuras
+
+- Seguimiento individual (tracking) para evitar contar dos veces la misma hormiga.
+- Exportar el conteo por cuadro a CSV para análisis posterior.
+- Calibración automática de `--min-area` según la resolución del video.
+
+## 👤 Autor
+
+**Nicolás Ayala Tovar** · [GitHub](https://github.com/NicolasAyalaTovar)
